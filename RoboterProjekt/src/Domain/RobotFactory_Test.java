@@ -19,7 +19,7 @@ class RobotFactory_Test {
 	@Test
 	void borderR2D2Test() throws InputMismatchException {
 		assertEquals("Testunit_R2D2",
-				RobotFactory.bestellen(RobotType.R2D2, "Testunit_R2D2").getName());
+				RobotFactory.order(RobotType.R2D2, "Testunit_R2D2").getName());
 	}
 	
 	/**
@@ -30,7 +30,7 @@ class RobotFactory_Test {
 	@Test
 	void orderC3POTest() throws InputMismatchException {
 		assertEquals("Testunit_C3PO",
-				RobotFactory.bestellen(RobotType.C3PO, "Testunit_C3PO").getName());
+				RobotFactory.order(RobotType.C3PO, "Testunit_C3PO").getName());
 	}
 	
 	/**
@@ -41,6 +41,6 @@ class RobotFactory_Test {
 	@Test
 	void noNameTest() throws InputMismatchException {
 		assertThrows(InputMismatchException.class,
-				() -> RobotFactory.bestellen(RobotType.C3PO, null));	
+				() -> RobotFactory.order(RobotType.C3PO, null));	
 	}
 }
