@@ -16,47 +16,47 @@ public class R2D2 extends Roboter {
 	 */
 	public R2D2(String name) {
 		super(name);
-		super.setSeriennummer((int) Math.random() * 9999 + 1);
+		super.setId((int) Math.random() * 9999 + 1);
 	}
 
 	/**
 	 * Hier denkt der Roboter, also ordnet die Zahlen mithilfe des
 	 * SelectionSort-Algorithmus
 	 *
-	 * @param zahlen : Zahlen die sortiert werden sollen
+	 * @param numbers : Zahlen die sortiert werden sollen
 	 * @return sortierte Zahlen im Integer-Array
 	 * @throws RobotException wenn der Roboter einen ungültigen Zustand oder das
 	 *                        Array nicht passt
 	 */
 	@Override
-	public int[] think(int[] zahlen) throws RobotException {
+	public int[] think(int[] numbers) throws RobotException {
 		int temp;
-		boolean gültig = true;
-		for (int zahl : zahlen) {
-			if (zahl == 42) {
-				gültig = false;
+		boolean valid = true;
+		for (int number : numbers) {
+			if (number == 42) {
+				valid = false;
 			}
 		}
 
 		if (super.isPowerOn()) {
-			if (gültig == false) {
-				super.getListe().add(new RobotMagicValueException(super.getName()));
+			if (valid == false) {
+				super.getList().add(new RobotMagicValueException(super.getName()));
 				throw new RobotMagicValueException(super.getName());
 			} else {
-				for (int i = 0; i < zahlen.length - 1; i++) {
-					for (int j = i + 1; j < zahlen.length; j++) {
-						if (zahlen[i] > zahlen[j]) {
-							temp = zahlen[i];
-							zahlen[i] = zahlen[j];
-							zahlen[j] = temp;
+				for (int i = 0; i < numbers.length - 1; i++) {
+					for (int j = i + 1; j < numbers.length; j++) {
+						if (numbers[i] > numbers[j]) {
+							temp = numbers[i];
+							numbers[i] = numbers[j];
+							numbers[j] = temp;
 						}
 					}
 				}
-				return zahlen;
+				return numbers;
 			}
 
 		} else {
-			super.getListe().add(new RobotIllegalStateException(super.getName()));
+			super.getList().add(new RobotIllegalStateException(super.getName()));
 			throw new RobotIllegalStateException(super.getName());
 		}
 	}

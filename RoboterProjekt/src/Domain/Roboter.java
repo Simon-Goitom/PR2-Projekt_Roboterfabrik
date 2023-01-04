@@ -14,25 +14,25 @@ import Interfaces.RobotInstructions;
 
 public abstract class Roboter implements Robot {
 	private final String name;
-	private int seriennummer;
-	private boolean roboterAn = false;
-	private List<RobotException> liste;
+	private int id;
+	private boolean powerOn = false;
+	private List<RobotException> list;
 
 	/**
 	 * Rückgabe der Ausnahmenliste des Roboters.
 	 * 
 	 * @return : Rückgabe vom Typ Liste.
 	 */
-	public List<RobotException> getListe() {
-		return liste;
+	public List<RobotException> getList() {
+		return list;
 	}
 
 	/**
 	 * 
-	 * @param liste : Hier wird die Ausnahmenliste des Roboters übergeben.
+	 * @param list : Hier wird die Ausnahmenliste des Roboters übergeben.
 	 */
-	public void setListe(List<RobotException> liste) {
-		this.liste = liste;
+	public void setList(List<RobotException> list) {
+		this.list = list;
 	}
 
 	/**
@@ -42,34 +42,25 @@ public abstract class Roboter implements Robot {
 	 */
 	Roboter(String name) {
 		this.name = name;
-		liste = new ArrayList<>();
-	}
-
-	/**
-	 * Hier wird die Seriennummer zurückgegeben.
-	 * 
-	 * @return : Seriennummer als Integerzahl.
-	 */
-	public int getSeriennummer() {
-		return seriennummer;
+		list = new ArrayList<>();
 	}
 
 	/**
 	 * Hier wird die Seriennummer gesetzt.
 	 * 
-	 * @param seriennummer : Hier gibt man eine beliebige Seriennummer ein.
+	 * @param id : Hier gibt man eine beliebige Seriennummer ein.
 	 */
-	public void setSeriennummer(int seriennummer) {
-		this.seriennummer = seriennummer;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**
 	 * Hier wird der Roboter eingeschaltet.
 	 * 
-	 * @param roboterAn : Damit wird das ein- und ausschalten realisiert.
+	 * @param powerOn : Damit wird das ein- und ausschalten realisiert.
 	 */
-	public void setRoboterAn(boolean roboterAn) {
-		this.roboterAn = roboterAn;
+	public void setRoboterOn(boolean powerOn) {
+		this.powerOn = powerOn;
 	}
 
 	/**
@@ -82,17 +73,17 @@ public abstract class Roboter implements Robot {
 	 * 
 	 */
 	@Override
-	public String speak(int[] zahlen) throws RobotException {
+	public String speak(int[] numbers) throws RobotException {
 		boolean exit = false;
-		for (int zahl : zahlen) {
-			if (zahl == 42) {
+		for (int number : numbers) {
+			if (number == 42) {
 				exit = true;
 			}
 		}
 		if (exit)
 			throw new RobotMagicValueException(this.getName());
 		else if (isPowerOn())
-			return getAusgabe(zahlen);
+			return getResult(numbers);
 		else
 			throw new RobotIllegalStateException(this.getName());
 	}
@@ -100,17 +91,17 @@ public abstract class Roboter implements Robot {
 	/**
 	 * Abhängig vom Roboter werden Zahlen formatiert.
 	 * 
-	 * @param zahlen : Zahlen die formatiert werden sollen.
+	 * @param numbers : Zahlen die formatiert werden sollen.
 	 * @return : Gibt einen String abhängig vom Roboter-Typ zurück.
 	 */
-	private String getAusgabe(int[] zahlen) {
-		String ergebnis = "";
+	private String getResult(int[] numbers) {
+		String result = "";
 		if (this instanceof R2D2)
-			ergebnis = Arrays.stream(zahlen).mapToObj(s -> String.valueOf(s)).reduce((a, b) -> a + "," + b).get();
+			result = Arrays.stream(numbers).mapToObj(s -> String.valueOf(s)).reduce((a, b) -> a + "," + b).get();
 		if (this instanceof C3PO)
-			ergebnis = Arrays.stream(zahlen).mapToObj(s -> String.valueOf(s)).reduce((a, b) -> a + ";" + b).get();
+			result = Arrays.stream(numbers).mapToObj(s -> String.valueOf(s)).reduce((a, b) -> a + ";" + b).get();
 
-		return ergebnis;
+		return result;
 	}
 	/**
 	 * Hier wird die ID zurückgegeben.
@@ -119,7 +110,7 @@ public abstract class Roboter implements Robot {
 	 */
 	@Override
 	public int getId() {
-		return seriennummer;
+		return id;
 	}
 
 	/**
@@ -139,10 +130,10 @@ public abstract class Roboter implements Robot {
 	 */
 	@Override
 	public void triggerPowerSwitch() {
-		if (roboterAn)
-			roboterAn = false;
-		if (!roboterAn)
-			roboterAn = true;
+		if (powerOn)
+			powerOn = false;
+		if (!powerOn)
+			powerOn = true;
 	}
 
 	/**
@@ -152,7 +143,7 @@ public abstract class Roboter implements Robot {
 	 */
 	@Override
 	public boolean isPowerOn() {
-		return roboterAn;
+		return powerOn;
 	}
 
 	/**
@@ -162,9 +153,9 @@ public abstract class Roboter implements Robot {
 	 */
 	@Override
 	public RobotException getLastException() {
-		if (liste == null)
+		if (list == null)
 			return null;
-		return liste.get(liste.size() - 1);
+		return list.get(list.size() - 1);
 	}
 
 }

@@ -23,7 +23,8 @@ class R2D2_Test {
 	 */
 	@Test
 	void checkSerialnumber() {
-		assertTrue(robot.getSeriennummer() < 10000);
+		assertTrue(robot.getId() >= 0);
+		assertTrue(robot.getId() <= 9999);
 	}
 	
 	/**
