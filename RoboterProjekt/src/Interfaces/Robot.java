@@ -1,8 +1,7 @@
 package Interfaces;
 
-import Interfaces.RobotControl;
 import Interfaces.RobotInstructions;
 
-interface Robot extends RobotControl, RobotInstructions {
+public interface Robot extends RobotControl, RobotInstructions {
 
 }

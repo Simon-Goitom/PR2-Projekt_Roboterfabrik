@@ -8,6 +8,10 @@ import Exceptions.RobotException;
 import Exceptions.RobotIllegalStateException;
 import Exceptions.RobotMagicValueException;
 
+import Interfaces.Robot;
+import Interfaces.RobotControl;
+import Interfaces.RobotInstructions;
+
 public abstract class Roboter implements Robot {
 	private final String name;
 	private int seriennummer;
