@@ -87,7 +87,7 @@ class C3POTest {
 	 * geworfen wird, wenn die Zahl 42 vorhanden.
 	 */
 	@Test
-	public void c3POSpeakExceptionTest() {
+	public void speakExceptionTest() {
 		robot2.triggerPowerSwitch();
 		assertThrows(RobotMagicValueException.class, () -> robot2.speak(new int[] { 1, 2, 42 }));
 	}
@@ -97,7 +97,7 @@ class C3POTest {
 	 * geworfen wird, wenn die Zahl 42 vorhanden.
 	 */
 	@Test
-	public void c3POThinkExceptionTest() {
+	public void thinkExceptionTest() {
 		robot2.triggerPowerSwitch();
 		assertThrows(RobotMagicValueException.class, () -> robot2.think(new int[] { 1, 2, 42 }));
 	}
