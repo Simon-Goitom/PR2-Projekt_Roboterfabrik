@@ -10,7 +10,7 @@ import Domain.Roboter;
 public class C3PO extends Roboter {
 
 	/**
-	 * Hier wird der R2D2 durch den Konstruktor erstellt.
+	 * Hier wird der C3PO durch den Konstruktor erstellt.
 	 * 
 	 * @param name : Hier wird der Name übergeben, wie der Roboter später heißen
 	 *             soll.
