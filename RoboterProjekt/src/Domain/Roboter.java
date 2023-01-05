@@ -132,8 +132,8 @@ public abstract class Roboter implements Robot {
 	public void triggerPowerSwitch() {
 		if (powerOn)
 			powerOn = false;
-		if (!powerOn)
-			powerOn = true;
+		else
+			powerOn= true;
 	}
 
 	/**
