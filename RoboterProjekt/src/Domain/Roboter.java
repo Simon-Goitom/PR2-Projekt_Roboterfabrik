@@ -17,6 +17,7 @@ public abstract class Roboter implements Robot {
 	private int id;
 	private boolean powerOn = false;
 	private List<RobotException> list;
+	
 
 	/**
 	 * Rückgabe der Ausnahmenliste des Roboters.
