@@ -1,6 +1,8 @@
 package Domain;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -95,5 +97,17 @@ class R2D2_Test {
 	void think42Test() throws RobotException {
 		robot.triggerPowerSwitch();
 		assertThrows(RobotMagicValueException.class, () -> robot.think(testNumbers42));	
+	}
+	
+	/**
+	 * Hier wird getestet ob die Exception auch wirklich im Fehlerspeicher des Roboters gespeichert wird
+	 */
+	@Test
+	void blackBoxTest() {
+		try {
+			robot.think(testNumbers);
+		} catch (RobotException e) {
+		}
+		assertTrue(robot.getLastException() instanceof RobotIllegalStateException);
 	}
 }

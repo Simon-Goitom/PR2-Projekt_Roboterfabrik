@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import Exceptions.RobotException;
+import Exceptions.RobotIllegalStateException;
 
 class RoboterTest {
 	
@@ -72,5 +73,17 @@ class RoboterTest {
 		robot1.triggerPowerSwitch();
 		
 		assertFalse(robot1.isPowerOn());
+	}
+	
+	/**
+	 * Hier wird getestet ob die Exception auch wirklich im Fehlerspeicher des Roboters gespeichert wird
+	 */
+	@Test
+	void blackBoxTest() {
+		try {
+			robot1.think(testNumbers);
+		} catch (RobotException e) {
+		}
+		assertTrue(robot1.getLastException() instanceof RobotIllegalStateException);
 	}
 }

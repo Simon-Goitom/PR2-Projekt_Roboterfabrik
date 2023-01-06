@@ -32,7 +32,7 @@ class C3POTest {
 	}
 
 	/**
-	 * Hier wird geprüft, ob der Roboter an ist
+	 * Hier wird geprï¿½ft, ob der Roboter an ist
 	 */
 	@Test
 	void isPowerOnTest() {
@@ -40,7 +40,7 @@ class C3POTest {
 	}
 
 	/**
-	 * Hier wird geprüft, ob die RoboterException geworfen wird, dass er aus ist.
+	 * Hier wird geprï¿½ft, ob die RoboterException geworfen wird, dass er aus ist.
 	 */
 	@Test
 	void turnedOffTest() {
@@ -63,7 +63,7 @@ class C3POTest {
 	}
 
 	/**
-	 * Hier wird geprüft ob die Zahlen absteigend sortiert werden.
+	 * Hier wird geprï¿½ft ob die Zahlen absteigend sortiert werden.
 	 * 
 	 * @throws RobotException
 	 */
@@ -103,7 +103,7 @@ class C3POTest {
 	}
 
 	/**
-	 * Hier wird die RobotMagicValueException geprüft, ob sie geworfen wird, wenn
+	 * Hier wird die RobotMagicValueException geprï¿½ft, ob sie geworfen wird, wenn
 	 * die '42' vorhanden ist.
 	 *
 	 * @throws RobotException
@@ -112,6 +112,18 @@ class C3POTest {
 	void think42Test() throws RobotException {
 		robot6.triggerPowerSwitch();
 		assertThrows(RobotMagicValueException.class, () -> robot6.think(testNumbers42));
+	}
+	
+	/**
+	 * Hier wird getestet ob die Exception auch wirklich im Fehlerspeicher des Roboters gespeichert wird
+	 */
+	@Test
+	void blackBoxTest() {
+		try {
+			robot1.think(testNumbers);
+		} catch (RobotException e) {
+		}
+		assertTrue(robot1.getLastException() instanceof RobotIllegalStateException);
 	}
 
 }
