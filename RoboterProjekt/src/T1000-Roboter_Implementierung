@@ -1,0 +1,9 @@
+
+Notwendige Erweiterungen und evtl. Änderungen für eine neue T1000-Roboter Produktlinie:
+
+1. Klasse mit dem Namen "T1000" anlegen für die Roboterinstanzen
+2. Robot- Interface in Klasse "T1000" implementieren
+3. Konstruktor anlegen plus die Methoden aus den Interfaces implementieren
+4. Fehlerspeicher in Form einer Liste anlegen zum Speichern der Exceptions in einer "T1000"- Instanz 
+5. JUnit Test zur "T1000"-Klasse anlegen, um die entsprechenden Funktionen auf Korrektheit abzutesten.
+6. Enum für Instanzen erstellen und die RobotFactory um die Instanziierung von T1000 Robotern erweitern. 
