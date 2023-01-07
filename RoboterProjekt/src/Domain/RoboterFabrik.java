@@ -14,9 +14,9 @@ public class RoboterFabrik {
 	 * @param modell : Hier gibt man an ob R2D2 oder C3PO ausgewählt werden soll.
 	 * @param name : Hier gibt man dem Roboter einen Namen.
 	 * @return : Der Roboter wird 'ausgeliefert' und ist bereit.
-	 * @throws InputMismatchException : Wird geworfen, falls kein Name eingegeben wird. 
+	 * 
 	 */
-	public static Robot order(RobotType modell, String name) throws InputMismatchException {
+	public static Robot order(RobotType modell, String name)  {
 		Robot roboter = null;
 		if (name != null) {
 			switch (modell) {
@@ -29,7 +29,7 @@ public class RoboterFabrik {
 			}
 			return roboter;
 		} else {
-			throw new InputMismatchException("Kein Name eingegeben");
+			throw new RuntimeException("Kein Name eingegeben");
 		}
 	}
 
