@@ -113,12 +113,22 @@ class C3POTest {
 		robot6.triggerPowerSwitch();
 		assertThrows(RobotMagicValueException.class, () -> robot6.think(testNumbers42));
 	}
-	
+
 	/**
-	 * Hier wird getestet ob die Exception auch wirklich im Fehlerspeicher des Roboters gespeichert wird
+	 * Hier wird getestet ob eine leere Liste null zurückgibt.
 	 */
 	@Test
 	void blackBoxTest() {
+		robot1.triggerPowerSwitch();
+		assertTrue(robot1.getLastException() == null);
+	}
+
+	/**
+	 * Hier wird getestet ob die Exception auch wirklich im Fehlerspeicher des
+	 * Roboters gespeichert wird
+	 */
+	@Test
+	void blackBoxTest2() {
 		try {
 			robot1.think(testNumbers);
 		} catch (RobotException e) {

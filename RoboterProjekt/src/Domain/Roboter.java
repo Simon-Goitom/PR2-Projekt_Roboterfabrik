@@ -17,7 +17,6 @@ public abstract class Roboter implements Robot {
 	private int id;
 	private boolean powerOn = false;
 	private List<RobotException> list;
-	
 
 	/**
 	 * Rückgabe der Ausnahmenliste des Roboters.
@@ -44,6 +43,7 @@ public abstract class Roboter implements Robot {
 	Roboter(String name) {
 		this.name = name;
 		list = new ArrayList<>();
+
 	}
 
 	/**
@@ -104,6 +104,7 @@ public abstract class Roboter implements Robot {
 
 		return result;
 	}
+
 	/**
 	 * Hier wird die ID zurückgegeben.
 	 * 
@@ -134,7 +135,7 @@ public abstract class Roboter implements Robot {
 		if (powerOn)
 			powerOn = false;
 		else
-			powerOn= true;
+			powerOn = true;
 	}
 
 	/**
@@ -154,7 +155,7 @@ public abstract class Roboter implements Robot {
 	 */
 	@Override
 	public RobotException getLastException() {
-		if (list == null)
+		if (list.size() == 0)
 			return null;
 		return list.get(list.size() - 1);
 	}
